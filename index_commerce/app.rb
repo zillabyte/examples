@@ -6,14 +6,14 @@ Zillabyte.simple_app do
   name "commerce_index"
 
   # Your function will have access
-  # to two fields as input data: URL and HTML
+  # to two fields as input data: url and html 
   matches "select * from web_pages"
 
   # Emit a tuple that is two-columns wide and contains 
-  # the attributes 'URL' and 'score', in the relation
+  # the attributes 'url' and 'score', in the relation
   # named "commerce_index".
   emits   [
-    ["commerce_index", [{"URL"=>:string}, {"score"=> :float}]]
+    ["commerce_index", [{"url"=>:string}, {"score"=> :float}]]
   ]
 
   # This is the heart of your algorithm.  It's processed on every
@@ -39,7 +39,7 @@ Zillabyte.simple_app do
       score += 0.1
     end
 
-    emit("commerce_index", "URL" => url, "score" => score)
+    emit("commerce_index", "url" => url, "score" => score)
   end
 
 end
