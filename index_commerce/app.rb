@@ -17,7 +17,7 @@ stream = input.each do |tuple|
     score += 0.1
   end
 
-  emit {:url => tuple['url'], :score => score}
+  emit :url => tuple['url'], :score => score
 end
 stream.sink do 
   name "commerce_index"

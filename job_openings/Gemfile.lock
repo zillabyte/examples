@@ -88,8 +88,8 @@ GEM
     time_difference (0.3.2)
       activesupport
     uuidtools (2.1.4)
-    zillabyte (0.0.21)
-      zillabyte-cli (~> 0.0.21)
+    zillabyte (0.0.22)
+      zillabyte-cli (~> 0.0.22)
     zillabyte-cli (0.0.22)
       actionpack (~> 3.2.13)
       activesupport (~> 3.2.11)
