@@ -1,45 +1,26 @@
 require 'zillabyte'
 
-Zillabyte.simple_app do
+app = Zillabyte.app "commerce_index"
 
-  # Every Zillabyte app needs a name
-  name "commerce_index"
+input = app.source "select * from web_pages"
 
-  # Your function will have access
-  # to two fields as input data: url and html 
-  matches "select * from web_pages"
-
-  # Emit a tuple that is two-columns wide and contains 
-  # the attributes 'url' and 'score', in the relation
-  # named "commerce_index".
-  emits   [
-    ["commerce_index", [{"url"=>:string}, {"score"=> :float}]]
-  ]
-
-  # This is the heart of your algorithm.  It's processed on every
-  # web page.  This algorithm is run in parallel on possibly hundreds
-  # of machines. 
-  execute do |tuple|
-
-    # Get the fields from your input data.
-    url = tuple['url']
-    html = tuple['html']
-
-    # You care about three commerce technologies: Bluekai,
-    # Gigya, and Scorecard Research.  However, you believe Bluekai
-    # should count for more in your index.
-    score = 0
-    if html.include?('bluekai.com')
-      score += 0.7
-    end
-    if html.include?('cdn.gigya.com/js/gigyaGAIntegration.js')
-      score += 0.2
-    end
-    if html.include?('b.scorecardresearch.com/beacon.js')
-      score += 0.1
-    end
-
-    emit("commerce_index", "url" => url, "score" => score)
+stream = input.each do |tuple|
+  html = tuple['html']
+  score = 0
+  if html.include?('bluekai.com')
+    score += 0.7
+  end
+  if html.include?('cdn.gigya.com/js/gigyaGAIntegration.js')
+    score += 0.2
+  end
+  if html.include?('b.scorecardresearch.com/beacon.js')
+    score += 0.1
   end
 
+  emit {:url => tuple['url'], :score => score}
+end
+stream.sink do 
+  name "commerce_index"
+  column "url", :string
+  column "score", :float
 end
