@@ -1,10 +1,8 @@
-## Creating a Commerce Index
+## Job Openings
 
-Zillabyte makes it aggregate data from the entire web and create an index based on your criteria.
+One of Zillabyte's core principles is its flexibility. Many websites expose information using RDF (Research Description Framework), a core component of W3C's semantic web stack. This example demonstrates how one might process job openings on Indeed using a combination of Zillabyte's native features and its support for third-party gems.
 
-A Zillabyte customer came to us wanting to rank the web according to the use of commerce technologies. Using Zillabyte, she was able to write a bit of code and get her answer. Here's how you can do it as well.
-
-http://docs.zillabyte.com/examples/index_commerce/
+http://docs.zillabyte.com/examples/job_openings/
 
 
 ## License

@@ -1,8 +1,10 @@
 ## Domain Rank
 
-A very simple Zillabyte App to identify the 'domain-rank' of various domains across the web.  That is, we want to identify how many pages link to a given domain.  The output of this app is a simple `[domain, score]` pair.  
+A simple Zillabyte App to identify the 'domain-rank' of various domains across the web.  That is, we want to identify how many pages link to a given domain.  The output of this app is` a simple `[domain, score]` pair.  
 
 This app is for demonstration purposes.  
+
+http://docs.zillabyte.com/examples/domain_rank/
 
 ## License
 

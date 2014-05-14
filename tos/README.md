@@ -1,12 +1,9 @@
-## Creating a Commerce Index
+## Market Coverage
 
-Zillabyte makes it aggregate data from the entire web and create an index based on your criteria.
+A Zillabyte customer asked us to find all the companies that use their payment processor service but violate the terms of their service. For legal reasons, it is required that a screenshot of each site matching the query. Here's how we did it.
 
-A Zillabyte customer came to us wanting to rank the web according to the use of commerce technologies. Using Zillabyte, she was able to write a bit of code and get her answer. Here's how you can do it as well.
-
-http://docs.zillabyte.com/examples/index_commerce/
-
-
+http://docs.zillabyte.com/examples/tos/
+ 
 ## License
 
 The MIT License (MIT)
