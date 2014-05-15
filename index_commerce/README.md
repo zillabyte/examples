@@ -1,10 +1,11 @@
-## Domain Rank
+## Creating a Commerce Index
 
-A simple Zillabyte App to identify the 'domain-rank' of various domains across the web.  That is, we want to identify how many pages link to a given domain.  The output of this app is` a simple `[domain, score]` pair.  
+Zillabyte makes it aggregate data from the entire web and create an index based on your criteria.
 
-This app is for demonstration purposes.  
+A Zillabyte customer came to us wanting to rank the web according to the use of commerce technologies. Using Zillabyte, she was able to write a bit of code and get her answer. Here's how you can do it as well.
 
-http://docs.zillabyte.com/examples/domain_rank/
+http://docs.zillabyte.com/examples/index_commerce/
+
 
 ## License
 

@@ -1,11 +1,9 @@
-## Domain Rank
+## Market Coverage
 
-A simple Zillabyte App to identify the 'domain-rank' of various domains across the web.  That is, we want to identify how many pages link to a given domain.  The output of this app is` a simple `[domain, score]` pair.  
+A Zillabyte customer asked us to find all the companies that use their payment processor service but violate the terms of their service. For legal reasons, it is required that a screenshot of each site matching the query. Here's how we did it.
 
-This app is for demonstration purposes.  
-
-http://docs.zillabyte.com/examples/domain_rank/
-
+http://docs.zillabyte.com/examples/tos/
+ 
 ## License
 
 The MIT License (MIT)

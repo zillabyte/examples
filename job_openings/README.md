@@ -1,10 +1,9 @@
-## Domain Rank
+## Job Openings
 
-A simple Zillabyte App to identify the 'domain-rank' of various domains across the web.  That is, we want to identify how many pages link to a given domain.  The output of this app is` a simple `[domain, score]` pair.  
+One of Zillabyte's core principles is its flexibility. Many websites expose information using RDF (Research Description Framework), a core component of W3C's semantic web stack. This example demonstrates how one might process job openings on Indeed using a combination of Zillabyte's native features and its support for third-party gems.
 
-This app is for demonstration purposes.  
+http://docs.zillabyte.com/examples/job_openings/
 
-http://docs.zillabyte.com/examples/domain_rank/
 
 ## License
 
