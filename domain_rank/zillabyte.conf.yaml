@@ -1,2 +1,2 @@
 language: ruby
-script: flow.rb
+script: app.rb

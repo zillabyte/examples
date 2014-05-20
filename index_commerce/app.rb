@@ -1,26 +1,33 @@
 require 'zillabyte'
 
-app = Zillabyte.app "commerce_index"
+app = Zillabyte.new("commerce_index")
+  .source("select * from web_pages")
+  .each{ |tuple|
 
-input = app.source "select * from web_pages"
 
-stream = input.each do |tuple|
-  html = tuple['html']
-  score = 0
-  if html.include?('bluekai.com')
-    score += 0.7
-  end
-  if html.include?('cdn.gigya.com/js/gigyaGAIntegration.js')
-    score += 0.2
-  end
-  if html.include?('b.scorecardresearch.com/beacon.js')
-    score += 0.1
-  end
+    # Get the fields from your input data.
+    url = tuple['url']
+    html = tuple['html']
+    
+    # You care about three commerce technologies: Bluekai,
+    # Gigya, and Scorecard Research.  However, you believe Bluekai
+    # should count for more in your index.
+    score = 0
+    if html.include?('bluekai.com')
+      score += 0.7
+    end
+    if html.include?('cdn.gigya.com/js/gigyaGAIntegration.js')
+      score += 0.2
+    end
+    if html.include?('b.scorecardresearch.com/beacon.js')
+      score += 0.1
+    end
+      
+    emit("url" => url, "score" => score)
+  }
+  .sink{
+    name "has_hello"
+    column "url", :string
+  }
 
-  emit :url => tuple['url'], :score => score
-end
-stream.sink do 
-  name "commerce_index"
-  column "url", :string
-  column "score", :float
 end
