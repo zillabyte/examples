@@ -1,6 +1,6 @@
 require 'zillabyte'
 
-app = Zillabyte.new("commerce_index")
+app = Zillabyte.app("commerce_index")
   .source("select * from web_pages")
   .each{ |tuple|
 
