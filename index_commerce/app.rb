@@ -26,8 +26,8 @@ app = Zillabyte.app("commerce_index")
     emit("url" => url, "score" => score)
   }
   .sink{
-    name "has_hello"
+    name "commerce_index"
     column "url", :string
+    column "score", :integer
   }
 
-end
