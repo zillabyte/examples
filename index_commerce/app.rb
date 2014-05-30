@@ -4,7 +4,6 @@ app = Zillabyte.app("commerce_index")
   .source("select * from web_pages")
   .each{ |tuple|
 
-
     # Get the fields from your input data.
     url = tuple['url']
     html = tuple['html']
@@ -26,8 +25,8 @@ app = Zillabyte.app("commerce_index")
     emit("url" => url, "score" => score)
   }
   .sink{
-    name "has_hello"
+    name "commerce_index"
     column "url", :string
+    column "score", :float
   }
-
 end
