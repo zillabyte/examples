@@ -27,12 +27,5 @@ app = Zillabyte.app("commerce_index")
   .sink{
     name "commerce_index"
     column "url", :string
-<<<<<<< HEAD
-    column "score", :integer
-  }
-
-=======
     column "score", :float
   }
-end
->>>>>>> master
