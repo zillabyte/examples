@@ -36,7 +36,15 @@ def execute_crawl(controller, tup):
 
 app = zillabyte.app(name="python_crawler")
 
-stream = app.source(matches="select * from domains")
-stream = stream.each(execute=execute_find_links)
-stream = stream.each(execute=execute_crawl)
-stream.sink(name="domain_pages", columns=[{"domain":"string"}, {"url":"string"}, {"html":"string"}])
+#Create a stream from all the domains we have
+domains           = app.source(matches="select * from domains")
+
+# For each homepage of the domain, fetch all the links
+inner_links       = domains.each(execute=execute_find_links)
+
+# For each link, fetch the page
+first_level_pages = inner_links.each(execute=execute_crawl)
+
+# Finally, save these pages 
+first_level_pages.sink(name="domain_pages", columns=[{"domain":"string"}, {"url":"string"}, {"html":"string"}])
+
