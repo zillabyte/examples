@@ -3,7 +3,7 @@ require 'nokogiri'
 
 
 # Create our 'app', the DSL to help us orchestrate our app
-app = Zillabyte.new("domain rank")
+app = Zillabyte.app("domain rank")
 
 
 # A 'source' is the beginning of a apps.  All data originates from the source.
