@@ -5,7 +5,7 @@ require 'nokogiri'
 # Create our 'app', the DSL to help us orchestrate our app
 app = Zillabyte.app("domain rank")
 
-# A 'source' is the beginning of a apps.  All data originates from the source.
+# A 'source' is the beginning of an app. All data originates from the source.
 stream = app.source("web_pages")
 
 # This is called on every web page
@@ -21,8 +21,7 @@ stream = stream.each do |tuple|
     target_uri = URI.join( base_url, link['href'])
     target_domain = target_uri.host.downcase
       
-    # Emit this back to the app.  This is important because it will allow
-    # Zillabyte to parallelize the operation
+    # Emit this back to the app.
     emit :source_domain => source_domain, :target_domain => target_domain
       
   end
@@ -30,17 +29,17 @@ stream = stream.each do |tuple|
 end
 
 
-# de-duplicate the stream.  i.e. throw out all tuples that have matching
+# Un-duplicate the stream. i.e. throw out all tuples that have matching
 # [source_domain, target_domain] pairs
 stream.unique()
 
 
-# Count the number of unique 'target_domain's.  By default, this will create a
+# Count the number of unique 'target_domain's. By default, this will create a
 # new field called 'count' and throw away all 'source_domain' values
 stream.count :target_domain
 
 
-# Final step, we need to sink the data into Zillabyte.  Sunk data is persistent
+# Final step, we need to sink the data into Zillabyte. Sunk data is persistent
 # and can be downloaded later. 
 web_stream.sink do |h|
   h.name "domain_rank"
